@@ -40,7 +40,8 @@ const allowedOrigins = [
   'http://localhost:3002',
   'http://localhost:5000',
   'http://14.225.212.12:3000',
-  'https://7-vits-online-shop-frontend.vercel.app'
+  'https://7-vits-online-shop-frontend.vercel.app',
+  'https://yellow-desert-0e83a1c00.3.azurestaticapps.net'
 ];
 
 const io = socketIO(server, {
