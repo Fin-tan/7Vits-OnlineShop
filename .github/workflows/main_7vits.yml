@@ -24,6 +24,9 @@ jobs:
           node-version: '22.x'
 
       - name: npm install, build, and test
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_ENV: production
         run: |
           npm install
           npm run build --if-present
@@ -62,4 +65,5 @@ jobs:
           app-name: '7vits'
           slot-name: 'Production'
           package: .
+
           
