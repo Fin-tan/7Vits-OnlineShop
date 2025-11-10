@@ -23,6 +23,12 @@ CREATE TABLE IF NOT EXISTS user_wallets (
     locked_balance DECIMAL(10, 2) NOT NULL DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+CREATE TABLE IF NOT EXISTS categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 
 -- 4. Tạo bảng products - phụ thuộc vào users và categories
@@ -31,7 +37,7 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(255) NOT NULL,
     description TEXT,
     price DECIMAL(10, 2) NOT NULL,
-    category VARCHAR(255),
+    category_id INT, -- thêm cột này
     stock INT DEFAULT 0,
     seller_id INT NOT NULL,
     status ENUM('active', 'inactive', 'sold_out') DEFAULT 'active',
@@ -41,8 +47,8 @@ CREATE TABLE IF NOT EXISTS products (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (seller_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
-    
 );
+
 
 -- 5. Tạo bảng ratings - phụ thuộc vào users và products
 CREATE TABLE IF NOT EXISTS ratings (
