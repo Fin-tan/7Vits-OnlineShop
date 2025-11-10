@@ -22,7 +22,10 @@ const pool = mysql.createPool({
     idleTimeout: 60000,                // Timeout cho idle connections
     // Thiết lập timeout for innodb lock
     enableKeepAlive: true,             // Giữ kết nối sống
-    keepAliveInitialDelay: 10000       // Delay trước khi gửi keepalive packet đầu tiên
+    keepAliveInitialDelay: 10000,       // Delay trước khi gửi keepalive packet đầu tiên
+    ssl: {
+    rejectUnauthorized: true
+  }
 });
 
 // Xử lý khi kết nối bị lỗi
