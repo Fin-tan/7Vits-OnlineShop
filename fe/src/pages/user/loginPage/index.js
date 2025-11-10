@@ -38,7 +38,7 @@ const LoginPage = () => {
     }, [location.search]);
 
     const handleLogin = async (e) => {
-        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000"; // fallback local
+        const API_URL = process.env.REACT_APP_API_URL; // fallback local
         console.log("API_URL hiện tại:", API_URL); // MỞ DEVTOOLS XEM DÒNG NÀY!
 
             e.preventDefault();
